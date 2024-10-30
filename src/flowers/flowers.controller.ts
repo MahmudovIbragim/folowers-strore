@@ -20,16 +20,20 @@ import { FlowersCreateDto } from './flowers.dto';
 export class FlowersController {
   constructor(private readonly flowersService: FlowersService) {}
   @Get()
-  @UseGuards(AuthGuard)
-  findAll(@Query('pageNumber', ParseIntPipe) pageNumber: number) {
-    console.log(pageNumber);
+  // @UseGuards(AuthGuard)
+  // findAll(@Query('page', ParseIntPipe) pageNumber: number) {
+  //   console.log(pageNumber);
 
+  //   return this.flowersService.findAll();
+  // }
+  findAll() {
+    console.log('pageNumber');
     return this.flowersService.findAll();
   }
 
   @Post()
-  @UseGuards(AuthGuard)
-  @UsePipes(new ValidationPipe())
+  // @UseGuards(AuthGuard)
+  // @UsePipes(new ValidationPipe())
   create(@Body() dto: FlowersCreateDto) {
     console.log(dto);
     return this.flowersService.create(dto);
