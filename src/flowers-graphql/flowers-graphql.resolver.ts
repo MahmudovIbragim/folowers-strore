@@ -8,6 +8,8 @@ export class FlowersGraphqlResolver {
 
   @Query(() => FlowerModel, { name: 'flowers' })
   findAll() {
+    console.log(name);
+
     return this.flowersService.findAll();
   }
 }
