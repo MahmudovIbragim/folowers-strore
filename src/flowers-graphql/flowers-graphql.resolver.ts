@@ -6,10 +6,8 @@ import { FlowerModel } from './flower.model';
 export class FlowersGraphqlResolver {
   constructor(private readonly flowersService: FlowersService) {}
 
-  @Query(() => FlowerModel, { name: 'flowers' })
+  @Query(() => [FlowerModel], { name: 'flowers' })
   findAll() {
-    console.log(name);
-
     return this.flowersService.findAll();
   }
 }

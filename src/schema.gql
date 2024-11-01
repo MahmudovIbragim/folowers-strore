@@ -17,5 +17,5 @@ type FlowerModel {
 }
 
 type Query {
-  flowers: FlowerModel!
+  flowers: [FlowerModel!]!
 }
