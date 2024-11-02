@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { FlowersService } from './flowers.service';
 import { FlowersController } from './flowers.controller';
-import { PrismaService } from 'src/prisma.servive';
+import { PrismaService } from '../prisma.servive';
 import { ConfigService } from '@nestjs/config';
 
 @Module({

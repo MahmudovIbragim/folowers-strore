@@ -1,11 +1,19 @@
-import { MessageBody, OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
-import { Server, Socket } from "socket.io";
-
+import {
+  MessageBody,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  OnGatewayInit,
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
+} from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway()
-export class WebSocketGateways implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-
-  @WebSocketServer() server: any;
+export class WebSocketGateways
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+{
+  @WebSocketServer() server: Server;
 
   afterInit(server: Server) {
     console.log('init');
@@ -19,11 +27,9 @@ export class WebSocketGateways implements OnGatewayInit, OnGatewayConnection, On
     console.log('disconnect', client.id);
   }
 
-
   @SubscribeMessage('message')
-  handleMessage(@MessageBody()  message: string) {
-    console.log(' message' , message);
+  handleMessage(@MessageBody() message: string): void {
+    console.log(' message', message);
     this.server.emit('message', `echo: ${message}`);
   }
-  
 }

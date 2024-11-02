@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.servive';
+import { PrismaService } from '../prisma.servive';
 import { FlowersCreateDto } from './flowers.dto';
 import { EnumAppMode } from 'src/types';
 
