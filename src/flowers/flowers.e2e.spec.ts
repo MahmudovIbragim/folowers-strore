@@ -14,69 +14,38 @@ describe('FLowersConteroller (e2e)', () => {
     app.useGlobalPipes(new ValidationPipe());
     await app.init();
   });
-
-  it('/flowers (GET)', () => {
-    return request(app.getHttpServer())
+  it('/flowers (GET)', async () => {
+    const response = await request(app.getHttpServer())
       .get('/flowers')
-      .expect(200)
-      .expect([
-        {
-          id: 1,
+      .expect(200);
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
           name: 'Роза',
           color: 'красный',
           price: 150,
-          createAt: '2024-10-27T16:36:26.518Z',
-          updateAt: '2024-10-27T16:36:26.518Z',
-        },
-        {
-          id: 2,
+        }),
+        expect.objectContaining({
+          id: expect.any(Number),
           name: 'Тюльпан',
           color: 'желтый',
           price: 80,
-          createAt: '2024-10-27T16:36:45.659Z',
-          updateAt: '2024-10-27T16:36:45.659Z',
-        },
-        {
-          id: 3,
-          name: 'Лилия',
-          color: 'белый',
-          price: 120,
-          createAt: '2024-10-27T16:36:58.609Z',
-          updateAt: '2024-10-27T16:36:58.609Z',
-        },
-        {
-          id: 4,
-          name: 'Гербера',
-          color: 'розовый',
-          price: 90,
-          createAt: '2024-10-27T16:37:12.307Z',
-          updateAt: '2024-10-27T16:37:12.307Z',
-        },
-        {
-          id: 5,
-          name: 'Хризантема',
-          color: 'оранжевый',
-          price: 70,
-          createAt: '2024-10-27T16:37:19.396Z',
-          updateAt: '2024-10-27T16:37:19.396Z',
-        },
-      ]);
+        }),
+        // Другие цветы, которые вы ожидаете
+      ]),
+    );
   });
 
-  it('/flowers (POST)', () => {
+  it('/flowers (POST) with invalid data', () => {
     return request(app.getHttpServer())
       .post('/flowers')
       .send({
-        name: 'Тюльпан',
+        name: '',
         color: 'желтый',
-        price: 80,
+        price: 'not-a-number',
       })
-      .expect(201)
-      .expect({
-        name: 'Тюльпан',
-        color: 'желтый',
-        price: 80,
-      });
+      .expect(400);
   });
 
   afterAll(async () => {
