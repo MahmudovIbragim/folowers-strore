@@ -1,7 +1,7 @@
-import { ConfigModule } from "@nestjs/config";
-import { FlowersService } from "./flowers.service";
-import { PrismaService } from "../prisma.servive";
-import { Test } from "@nestjs/testing";
+import { ConfigModule } from '@nestjs/config';
+import { FlowersService } from './flowers.service';
+import { PrismaService } from '../prisma.servive';
+import { Test } from '@nestjs/testing';
 
 describe('FlowersService', () => {
   let service: FlowersService;
@@ -40,8 +40,8 @@ describe('FlowersService', () => {
   });
 
   it('should create a new flower', async () => {
-    expect(
-      await service.create({ name: 'Роза', color: 'красный', price: 150 }),
-    ).toEqual(mockFlowerData[0]);
+    expect(await service.create({ name: 'Роза', color: 'красный', price: 150 })).toEqual(
+      mockFlowerData[0],
+    );
   });
 });

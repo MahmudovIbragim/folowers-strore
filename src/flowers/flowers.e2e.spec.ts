@@ -15,9 +15,7 @@ describe('FLowersConteroller (e2e)', () => {
     await app.init();
   });
   it('/flowers (GET)', async () => {
-    const response = await request(app.getHttpServer())
-      .get('/flowers')
-      .expect(200);
+    const response = await request(app.getHttpServer()).get('/flowers').expect(200);
     expect(response.body).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
