@@ -13,7 +13,7 @@ export class FlowersService {
 
   findAll() {
     console.log(this.configService.get<EnumAppMode>('MODE'));
-    
+
     return this.prisma.flower.findMany();
   }
   create(dto: FlowersCreateDto) {

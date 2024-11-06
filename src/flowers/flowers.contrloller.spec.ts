@@ -32,26 +32,28 @@ describe('FlowersController ', () => {
     controller = module.get<FlowersController>(FlowersController);
   });
 
-  it('should return an array of flowers', async() => {
+  it('should return an array of flowers', async () => {
     expect(await controller.findAll()).toEqual([
       {
         id: 1,
         name: 'rose',
         color: 'red',
         price: 10,
-      }
-    ])
-  })
-  it('should create a new flower', async() => {
-    expect(await controller.create({
-      name: 'lily',
-      color: 'yellow',
-      price: 20
-    })).toEqual({
+      },
+    ]);
+  });
+  it('should create a new flower', async () => {
+    expect(
+      await controller.create({
+        name: 'lily',
+        color: 'yellow',
+        price: 20,
+      }),
+    ).toEqual({
       id: 1,
       name: 'lily',
       color: 'yellow',
-      price: 20
-    })
-  })
+      price: 20,
+    });
+  });
 });

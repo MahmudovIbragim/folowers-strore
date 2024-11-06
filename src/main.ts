@@ -19,23 +19,15 @@ async function bootstrap() {
   await app.listen(4200);
   console.log('Listening on port 4200...');
 
-  const mircoservice =
-    await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-      transport: Transport.TCP,
-      options: {
-        host: 'localhost',
-        port: 8877,
-      },
-    });
+  const mircoservice = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+    transport: Transport.TCP,
+    options: {
+      host: 'localhost',
+      port: 8877,
+    },
+  });
 
   await mircoservice.listen();
   console.log('Listening on microservicee port 4200...');
 }
 bootstrap();
-
-
-
-// successfull
-//update
-//new update
-//cvadtart
