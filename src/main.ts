@@ -31,6 +31,3 @@ async function bootstrap() {
   console.log('Listening on microservicee port 4200...');
 }
 bootstrap();
-
-
-///new
