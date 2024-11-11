@@ -14,7 +14,7 @@ describe('FlowersService', () => {
       createAt: '2024-10-27T16:36:26.518Z',
       updateAt: '2024-10-27T16:36:26.518Z',
     },
-    // Добавьте остальные цветы из исходного массива данных для более точного теста.
+    
   ];
   beforeEach(async () => {
     const module = await Test.createTestingModule({

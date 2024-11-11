@@ -30,7 +30,7 @@ describe('FLowersConteroller (e2e)', () => {
           color: 'желтый',
           price: 80,
         }),
-        // Другие цветы, которые вы ожидаете
+     
       ]),
     );
   });
